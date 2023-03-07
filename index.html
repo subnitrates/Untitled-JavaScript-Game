@@ -1,7 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Incremental Game</title>
+	<title>Untitled Incremental Game</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+
 </head>
 <body>
 	<h1>Incremental Game</h1>
@@ -13,16 +15,20 @@
 	<p id="resources">0</p>
 	
 	<p>Upgrade your resource generator:</p>
+	<p>Generator level: <span id="level">1</span></p>
+	<p>Generator cost: <span id="cost">10</span></p>
+	<p>Resources per click: <span id="perclick">1</span></p>
 	<button id="upgrade">Upgrade Generator</button>
 	
 	<script>
 		var resources = 0;
 		var generatorLevel = 1;
 		var generatorCost = 10;
+		var resourcesPerClick = 1;
 		
 		var generateButton = document.getElementById("generate");
 		generateButton.addEventListener("click", function() {
-			resources += generatorLevel;
+			resources += resourcesPerClick;
 			document.getElementById("resources").innerHTML = resources;
 		});
 		
@@ -32,7 +38,11 @@
 				resources -= generatorCost;
 				generatorLevel++;
 				generatorCost *= 2;
+				resourcesPerClick = generatorLevel;
 				document.getElementById("resources").innerHTML = resources;
+				document.getElementById("level").innerHTML = generatorLevel;
+				document.getElementById("cost").innerHTML = generatorCost;
+				document.getElementById("perclick").innerHTML = resourcesPerClick;
 			}
 		});
 	</script>
