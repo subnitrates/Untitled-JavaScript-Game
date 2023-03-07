@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Incremental Game</title>
+</head>
+<body>
+	<h1>Incremental Game</h1>
+	
+	<p>Click the button to generate resources:</p>
+	<button id="generate">Generate Resource</button>
+	
+	<p>Your resources:</p>
+	<p id="resources">0</p>
+	
+	<p>Upgrade your resource generator:</p>
+	<button id="upgrade">Upgrade Generator</button>
+	
+	<script>
+		var resources = 0;
+		var generatorLevel = 1;
+		var generatorCost = 10;
+		
+		var generateButton = document.getElementById("generate");
+		generateButton.addEventListener("click", function() {
+			resources += generatorLevel;
+			document.getElementById("resources").innerHTML = resources;
+		});
+		
+		var upgradeButton = document.getElementById("upgrade");
+		upgradeButton.addEventListener("click", function() {
+			if (resources >= generatorCost) {
+				resources -= generatorCost;
+				generatorLevel++;
+				generatorCost *= 2;
+				document.getElementById("resources").innerHTML = resources;
+			}
+		});
+	</script>
+</body>
+</html>
