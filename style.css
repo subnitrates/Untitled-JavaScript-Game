@@ -30,6 +30,11 @@ p {
     margin-top: 5px;
     margin-bottom: 20px;
 }
+.resource-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }  
 #level, #cost, #perclick {
     font-weight: normal;
 }

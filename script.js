@@ -1,3 +1,6 @@
+//version count, matters for save function
+var version = "1.0.1";
+
 // define resources
 var resources = {
     food: 0,
@@ -14,40 +17,43 @@ var generators = {
         level: 1,
         cost: 10,
         perClick: 1,
-        perSecond: 0.2
+        perSecond: 0.2,
+        type: "food"
     },
     water: {
         name: "Well",
         level: 1,
         cost: 10,
         perClick: 1,
-        perSecond: 0.1
+        perSecond: 0.1,
+        type: "water"
     },
     wood: {
         name: "Lumber Mill",
         level: 1,
-        baseCost: 50,
-        costMultiplier: 1.2,
-        baseOutput: 0.5,
-        outputMultiplier: 1.2
+        cost: 50,
+        perClick: 1,
+        perSecond: 0,
+        type: "wood"
     },
     stone: {
         name: "Quarry",
         level: 1,
-        baseCost: 50,
-        costMultiplier: 1.2,
-        baseOutput: 0.5,
-        outputMultiplier: 1.2
+        cost: 50,
+        perClick: 1,
+        perSecond: 0,
+        type: "stone"
     },
     animalHides: {
         name: "Hunting Lodge",
         level: 1,
-        baseCost: 100,
-        costMultiplier: 1.3,
-        baseOutput: 0.25,
-        outputMultiplier: 1.3
+        cost: 100,
+        perClick: 1,
+        perSecond: 0,
+        type: "animalHides"
     }
 };
+
 
 // update resource display
 function updateResources() {
@@ -87,44 +93,45 @@ function upgradeGenerator(generatorType) {
         generator.level++;
         generator.cost *= 2;
         generator.perClick = generator.level;
-        updateResources();
         updateGenerator(generatorType);
+        updateResources();
     }
 }
 
+
 // event listeners for buttons
-document.getElementById("food-generate").addEventListener("click", function() {
+document.getElementById("food-generate").addEventListener("click", function () {
     generateResource("food");
 });
-document.getElementById("food-upgrade").addEventListener("click", function() {
+document.getElementById("food-upgrade").addEventListener("click", function () {
     upgradeGenerator("food");
 });
 
-document.getElementById("water-generate").addEventListener("click", function() {
+document.getElementById("water-generate").addEventListener("click", function () {
     generateResource("water");
 });
-document.getElementById("water-upgrade").addEventListener("click", function() {
+document.getElementById("water-upgrade").addEventListener("click", function () {
     upgradeGenerator("water");
 });
 
-document.getElementById("wood-generate").addEventListener("click", function() {
+document.getElementById("wood-generate").addEventListener("click", function () {
     generateResource("wood");
 });
-document.getElementById("wood-upgrade").addEventListener("click", function() {
+document.getElementById("wood-upgrade").addEventListener("click", function () {
     upgradeGenerator("wood");
 });
 
-document.getElementById("stone-generate").addEventListener("click", function() {
+document.getElementById("stone-generate").addEventListener("click", function () {
     generateResource("stone");
 });
-document.getElementById("stone-upgrade").addEventListener("click", function() {
+document.getElementById("stone-upgrade").addEventListener("click", function () {
     upgradeGenerator("stone");
 });
 
-document.getElementById("animalHides-generate").addEventListener("click", function() {
+document.getElementById("animalHides-generate").addEventListener("click", function () {
     generateResource("animalHides");
 });
-document.getElementById("animalHides-upgrade").addEventListener("click", function() {
+document.getElementById("animalHides-upgrade").addEventListener("click", function () {
     upgradeGenerator("animalHides");
 });
 
@@ -142,9 +149,16 @@ function saveGame() {
 
 // load game state from local storage
 function loadGame() {
+    var savedVersion = localStorage.getItem("version");
     var savedResources = JSON.parse(localStorage.getItem("resources"));
     var savedGenerators = JSON.parse(localStorage.getItem("generators"));
-    if (savedResources !== null && savedGenerators !== null) {
+    var currentVersion = "1.0"; // set this to the current version or timestamp of your JavaScript file
+    if (savedVersion === null || savedVersion !== currentVersion) {
+        // clear saved data if version doesn't match
+        localStorage.removeItem("resources");
+        localStorage.removeItem("generators");
+        localStorage.setItem("version", currentVersion);
+    } else if (savedResources !== null && savedGenerators !== null) {
         resources = savedResources;
         generators = savedGenerators;
         updateResources();
@@ -154,18 +168,19 @@ function loadGame() {
     }
 }
 
+
 // add event listener for save button
-document.getElementById("save-button").addEventListener("click", function() {
+document.getElementById("save-button").addEventListener("click", function () {
     saveGame();
 });
 
 // add event listener for load button
-document.getElementById("load-button").addEventListener("click", function() {
+document.getElementById("load-button").addEventListener("click", function () {
     loadGame();
 });
 
 // auto-save every 30 seconds
-setInterval(function() {
+setInterval(function () {
     saveGame();
 }, 30000);
 

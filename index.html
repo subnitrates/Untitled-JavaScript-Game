@@ -1,42 +1,81 @@
 <!DOCTYPE html>
 <html>
-  <head>
+
+<head>
     <meta charset="UTF-8">
     <title>Incremental Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-  </head>
-  <body>
+</head>
+
+<body>
     <h1>Incremental Game</h1>
     <h2>Resources</h2>
     <ul>
-      <li>Food: <span id="food"></span></li>
-      <li>Water: <span id="water"></span></li>
-      <li>Population: <span id="population"></span></li>
-      <li>Wood: <span id="wood"></span></li>
-      <li>Stone: <span id="stone"></span></li>
-      <li>Hide: <span id="hide"></span></li>
+        <li>Food: <span id="food" class="resource"></span></li>
+        <li>Water: <span id="water" class="resource"></span></li>
+        <!--<li>Population: <span id="population"></span></li>-->
+        <li>Wood: <span id="wood" class="resource"></span></li>
+        <li>Stone: <span id="stone" class="resource"></span></li>
+        <li>Hide: <span id="animalHides" class="resource"></span></li>
     </ul>
     <h2>Generators</h2>
-    <h3>Food</h3>
-    <button id="food-generate">Generate Food</button>
-    <button id="food-upgrade">Upgrade Food Generator</button>
-    <p>Level: <span id="food-level"></span></p>
-    <p>Cost: <span id="food-cost"></span></p>
-    <p>Per Click: <span id="food-perclick"></span></p>
-    <p>Per Second: <span id="food-persecond"></span></p>
-    <h3>Water</h3>
-    <button id="water-generate">Generate Water</button>
-    <button id="water-upgrade">Upgrade Water Generator</button>
-    <p>Level: <span id="water-level"></span></p>
-    <p>Cost: <span id="water-cost"></span></p>
-    <p>Per Click: <span id="water-perclick"></span></p>
-    <p>Per Second: <span id="water-persecond"></span></p>
+    <div class="generator">
+        <h3>Food</h3>
+        <button id="food-generate">Scavange for Food</button>
+        <button id="food-upgrade">Build a Farm</button>
+        <p>Level: <span id="food-level"></span></p>
+        <p>Cost: <span id="food-cost"></span></p>
+        <p>Per Click: <span id="food-perclick"></span></p>
+        <p>Per Second: <span id="food-persecond"></span></p>
+    </div>
+    <div class="generator">
+        <h3>Water</h3>
+        <button id="water-generate">Collect Water</button>
+        <button id="water-upgrade">Build a Well</button>
+        <p>Level: <span id="water-level"></span></p>
+        <p>Cost: <span id="water-cost"></span></p>
+        <p>Per Click: <span id="water-perclick"></span></p>
+        <p>Per Second: <span id="water-persecond"></span></p>
+
+    </div>
+
+    <div class="generator">
+        <h3>Wood</h3>
+        <p>Level: <span id="wood-level"></span></p>
+        <p>Cost: <span id="wood-cost"></span> wood</p>
+        <p>Per Click: <span id="wood-perclick"></span></p>
+        <p>Per Second: <span id="wood-persecond"></span></p>
+        <button id="wood-generate">Chop Wood</button>
+        <button id="wood-upgrade">Build a Lumber Mill</button>
+    </div>
+
+    <div class="generator">
+        <h3>Quarry</h3>
+        <p>Level: <span id="stone-level"></span></p>
+        <p>Cost: <span id="stone-cost"></span> stone</p>
+        <p>Per Click: <span id="stone-perclick"></span></p>
+        <p>Per Second: <span id="stone-persecond"></span></p>
+        <button id="stone-generate">Mine Stone</button>
+        <button id="stone-upgrade">Build a Mine</button>
+    </div>
+
+    <div class="generator">
+        <h3>Hunting Lodge</h3>
+        <p>Level: <span id="animalHides-level"></span></p>
+        <p>Cost: <span id="animalHides-cost"></span> animal hides</p>
+        <p>Per Click: <span id="animalHides-perclick"></span></p>
+        <p>Per Second: <span id="animalHides-persecond"></span></p>
+        <button id="animalHides-generate">Hunt Animals</button>
+        <button id="animalHides-upgrade">Build a Hunting Lodge</button>
+    </div>
+
+
     <div id="save-load-container" style="position: absolute; top: 0; right: 0;">
         <button id="save-button">Save</button>
         <button id="load-button">Load</button>
     </div>
-    
+
     <script src="script.js"></script>
-  </body>
+</body>
 
 </html>
