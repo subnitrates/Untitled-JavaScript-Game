@@ -1,10 +1,7 @@
 // define resources
 var resources = {
     food: 0,
-    water: 0,
-    wood: 0,
-    stone: 0,
-    animalHides: 0
+    water: 0
   };
   
   // define generators
@@ -20,24 +17,6 @@ var resources = {
       cost: 10,
       perClick: 1,
       perSecond: 0.1
-    },
-    wood: {
-      level: 1,
-      cost: 10,
-      perClick: 1,
-      perSecond: 0.05
-    },
-    stone: {
-      level: 1,
-      cost: 10,
-      perClick: 1,
-      perSecond: 0.02
-    },
-    animalHides: {
-      level: 1,
-      cost: 10,
-      perClick: 1,
-      perSecond: 0.01
     }
   };
   
@@ -84,25 +63,26 @@ var resources = {
     }
   }
   
-  // set up event listeners
-  document.getElementById("food-generate").addEventListener("click", function() { generateResource("food"); });
-  document.getElementById("water-generate").addEventListener("click", function() { generateResource("water"); });
-  document.getElementById("wood-generate").addEventListener("click", function() { generateResource("wood"); });
-  document.getElementById("stone-generate").addEventListener("click", function() { generateResource("stone"); });
-  document.getElementById("animalhides-generate").addEventListener("click", function() { generateResource("animalHides"); });
+  // event listeners for buttons
+  document.getElementById("food-generate").addEventListener("click", function() {
+    generateResource("food");
+  });
+  document.getElementById("food-upgrade").addEventListener("click", function() {
+    upgradeGenerator("food");
+  });
+  document.getElementById("water-generate").addEventListener("click", function() {
+    generateResource("water");
+  });
+  document.getElementById("water-upgrade").addEventListener("click", function() {
+    upgradeGenerator("water");
+  });
   
-  document.getElementById("food-upgrade").addEventListener("click", function() { upgradeGenerator("food"); });
-  document.getElementById("water-upgrade").addEventListener("click", function() { upgradeGenerator("water"); });
-  document.getElementById("wood-upgrade").addEventListener("click", function() { upgradeGenerator("wood"); });
-  document.getElementById("stone-upgrade").addEventListener("click", function() { upgradeGenerator("stone"); });
-  document.getElementById("animalhides-upgrade").addEventListener("click", function() { upgradeGenerator("animalHides"); });
-  
-  // start auto-generation
+  // automatic resource generation
   setInterval(function() {
     autoGenerateResource("food");
     autoGenerateResource("water");
-    autoGenerateResource("wood");
-    autoGenerateResource("stone");
+  }, 1000);
+  
   
 //Old Code:
 /*var resources = 0;

@@ -1,30 +1,32 @@
 <!DOCTYPE html>
 <html>
-<head>
-	<title>Untitled Incremental Game</title>
+  <head>
+    <meta charset="UTF-8">
+    <title>Incremental Game</title>
     <link rel="stylesheet" type="text/css" href="style.css">
-
-</head>
-<body>
-	<h1>Incremental Game</h1>
-	
-	<p>Click the button to generate resources:</p>
-	<button id="food">Generate Food</button>
-    <button id="water">Generate Water</button>
-
-    <h2>Your resources:</h2>
+  </head>
+  <body>
+    <h1>Incremental Game</h1>
+    <h2>Resources</h2>
     <ul>
-        <li>Food: <span id="food"></span></li>
-        <li>Water: <span id="water"></span></li>
+      <li>Food: <span id="food"></span></li>
+      <li>Water: <span id="water"></span></li>
     </ul>
-
-
-    <p>Upgrade your resource generator:</p>
-	<p>Generator level: <span id="level">1</span></p>
-	<p>Generator cost: <span id="cost">10</span></p>
-	<p>Resources per click: <span id="perclick">1</span></p>
-	<button id="upgrade">Upgrade Generator</button>
-	
+    <h2>Generators</h2>
+    <h3>Food</h3>
+    <button id="food-generate">Generate Food</button>
+    <button id="food-upgrade">Upgrade Food Generator</button>
+    <p>Level: <span id="food-level"></span></p>
+    <p>Cost: <span id="food-cost"></span></p>
+    <p>Per Click: <span id="food-perclick"></span></p>
+    <p>Per Second: <span id="food-persecond"></span></p>
+    <h3>Water</h3>
+    <button id="water-generate">Generate Water</button>
+    <button id="water-upgrade">Upgrade Water Generator</button>
+    <p>Level: <span id="water-level"></span></p>
+    <p>Cost: <span id="water-cost"></span></p>
+    <p>Per Click: <span id="water-perclick"></span></p>
+    <p>Per Second: <span id="water-persecond"></span></p>
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
