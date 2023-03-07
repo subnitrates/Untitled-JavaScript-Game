@@ -2,7 +2,6 @@
 var resources = {
     food: 0,
     water: 0,
-    population: 0,
     wood: 0,
     stone: 0,
     animalHides: 0
@@ -106,13 +105,6 @@ document.getElementById("water-generate").addEventListener("click", function() {
 });
 document.getElementById("water-upgrade").addEventListener("click", function() {
     upgradeGenerator("water");
-});
-
-document.getElementById("population-generate").addEventListener("click", function() {
-    generateResource("population");
-});
-document.getElementById("population-upgrade").addEventListener("click", function() {
-    upgradeGenerator("population");
 });
 
 document.getElementById("wood-generate").addEventListener("click", function() {
