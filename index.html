@@ -20,31 +20,6 @@
 	<p>Resources per click: <span id="perclick">1</span></p>
 	<button id="upgrade">Upgrade Generator</button>
 	
-	<script>
-		var resources = 0;
-		var generatorLevel = 1;
-		var generatorCost = 10;
-		var resourcesPerClick = 1;
-		
-		var generateButton = document.getElementById("generate");
-		generateButton.addEventListener("click", function() {
-			resources += resourcesPerClick;
-			document.getElementById("resources").innerHTML = resources;
-		});
-		
-		var upgradeButton = document.getElementById("upgrade");
-		upgradeButton.addEventListener("click", function() {
-			if (resources >= generatorCost) {
-				resources -= generatorCost;
-				generatorLevel++;
-				generatorCost *= 2;
-				resourcesPerClick = generatorLevel;
-				document.getElementById("resources").innerHTML = resources;
-				document.getElementById("level").innerHTML = generatorLevel;
-				document.getElementById("cost").innerHTML = generatorCost;
-				document.getElementById("perclick").innerHTML = resourcesPerClick;
-			}
-		});
-	</script>
+    <script src="script.js"></script>
 </body>
 </html>
