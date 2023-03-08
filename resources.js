@@ -13,3 +13,4 @@ function updateResources() {
         document.getElementById(resource).innerHTML = resources[resource];
     }
 }
+
