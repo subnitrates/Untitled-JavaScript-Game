@@ -9,16 +9,22 @@
 
 <body>
     <h1>Incremental Game</h1>
-    <h2>Resources</h2>
-    <ul>
-        <li>Food: <span id="food" class="resource"></*span></li>
-        <li>Water: <span id="water" class="resource"></span></li>
-        <!--<li>Population: <span id="population"></span></li>-->
-        <li>Wood: <span id="wood" class="resource"></span></li>
-        <li>Stone: <span id="stone" class="resource"></span></li>
-        <li>Hide: <span id="animalHides" class="resource"></span></li>
-    </ul>
-    <h2>Generators</h2>
+    <div class="resources">
+        <h2>Resources</h2>
+    </div>
+    <div class="resources">
+        <ul>
+            <li>Food: <span id="food" class="resource"></span></li>
+            <li>Water: <span id="water" class="resource"></span></li>
+            <!--<li>Population: <span id="population"></span></li>-->
+            <li>Wood: <span id="wood" class="resource"></span></li>
+            <li>Stone: <span id="stone" class="resource"></span></li>
+            <li>Hide: <span id="animalHides" class="resource"></span></li>
+        </ul>
+    </div>
+    <div class="generator">
+        <h2>Generators</h2>
+    </div>
     <div class="generator">
         <h3>Food</h3>
         <button id="food-generate">Scavange for Food</button>
@@ -41,32 +47,33 @@
 
     <div class="generator">
         <h3>Wood</h3>
+        <button id="wood-generate">Chop Wood</button>
+        <button id="wood-upgrade">Build a Lumber Mill</button>
         <p>Level: <span id="wood-level"></span></p>
         <p>Cost: <span id="wood-cost"></span> wood</p>
         <p>Per Click: <span id="wood-perclick"></span></p>
         <p>Per Second: <span id="wood-persecond"></span></p>
-        <button id="wood-generate">Chop Wood</button>
-        <button id="wood-upgrade">Build a Lumber Mill</button>
     </div>
 
     <div class="generator">
         <h3>Quarry</h3>
+        <button id="stone-generate">Mine Stone</button>
+        <button id="stone-upgrade">Build a Mine</button>
         <p>Level: <span id="stone-level"></span></p>
         <p>Cost: <span id="stone-cost"></span> stone</p>
         <p>Per Click: <span id="stone-perclick"></span></p>
         <p>Per Second: <span id="stone-persecond"></span></p>
-        <button id="stone-generate">Mine Stone</button>
-        <button id="stone-upgrade">Build a Mine</button>
     </div>
 
     <div class="generator">
         <h3>Hunting Lodge</h3>
+        <button id="animalHides-generate">Hunt Animals</button>
+        <button id="animalHides-upgrade">Build a Hunting Lodge</button>
         <p>Level: <span id="animalHides-level"></span></p>
         <p>Cost: <span id="animalHides-cost"></span> animal hides</p>
         <p>Per Click: <span id="animalHides-perclick"></span></p>
         <p>Per Second: <span id="animalHides-persecond"></span></p>
-        <button id="animalHides-generate">Hunt Animals</button>
-        <button id="animalHides-upgrade">Build a Hunting Lodge</button>
+
     </div>
 
 
@@ -75,7 +82,11 @@
         <button id="load-button">Load</button>
     </div>
 
+
+    <script src="resources.js"></script>
+    <script src="generators.js"></script>
     <script src="script.js"></script>
+
 </body>
 
 </html>

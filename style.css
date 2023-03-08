@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f0f0f0;
+    background-color: hsl(0, 0%, 10%);
     padding: 20px;
 }
 h1 {
@@ -38,3 +38,11 @@ p {
 #level, #cost, #perclick {
     font-weight: normal;
 }
+.generator
+    {
+        background-color: #595959;
+    }
+.resources
+    {
+        background-color: goldenrod;
+    }
