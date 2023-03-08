@@ -58,8 +58,6 @@ function updateGenerator(generatorType) {
     document.getElementById(generatorType + "-persecond").innerHTML = generator.perSecond;
 }
 
-
-
 // generate resources automatically
 function autoGenerateResource(generatorType) {
     var generator = generators[generatorType];
@@ -78,4 +76,16 @@ function upgradeGenerator(generatorType) {
         updateGenerator(generatorType);
         updateResources();
     }
+}
+
+// set initial generator display
+for (var generatorType in generators) {
+    updateGenerator(generatorType);
+}
+
+// auto-generate resources for each generator
+for (var generatorType in generators) {
+    setInterval(function() {
+        autoGenerateResource(generatorType);
+    }, 1000);
 }
