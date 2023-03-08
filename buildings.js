@@ -1,4 +1,4 @@
-var buildings = {
+const buildings = {
     farm: {
         name: "Farm",
         level: 1,
@@ -35,6 +35,13 @@ var buildings = {
         type: "animalHides"
     }
 };
+
+function updateGeneratorValues(generator) {
+  const perClickElement = document.getElementById(`-perclick`);
+  const perSecondElement = document.getElementById(`-persecond`);
+  console.log(`Per click element found:  with innerHTML: ${perClickElement.innerHTML}`);
+  console.log(`Per second element found:  with innerHTML: ${perSecondElement.innerHTML}`);
+}
 
 
 // update buildings display
