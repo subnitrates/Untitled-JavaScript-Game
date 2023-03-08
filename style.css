@@ -3,9 +3,11 @@ body {
     background-color: hsl(0, 0%, 10%);
     padding: 20px;
 }
+
 h1 {
     text-align: center;
 }
+
 button {
     background-color: #4CAF50;
     color: white;
@@ -15,34 +17,108 @@ button {
     margin-top: 10px;
     cursor: pointer;
 }
+
 button:hover {
     background-color: #3e8e41;
 }
+
 p {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 16px;
     font-weight: bold;
 }
+
 #resources {
     font-size: 24px;
     font-weight: bold;
     margin-top: 5px;
     margin-bottom: 20px;
 }
+
 .resource-container {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
     align-items: center;
-  }  
-#level, #cost, #perclick {
+}
+
+#level,
+#cost,
+#perclick {
     font-weight: normal;
 }
-.generator
-    {
-        background-color: #595959;
-    }
-.resources
-    {
-        background-color: goldenrod;
-    }
+
+.generator {
+    background-color: #595959;
+    width: calc(20% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.generators-box {
+    background-color: #363636;
+    width: calc(100% - 20px);
+    margin-bottom: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+}
+
+.resources {
+    background-color: goldenrod;
+    background-size: contain;
+}
+
+.resource {
+    background-color: goldenrod;
+    background-size: contain;
+}
+
+.tooltip-btn {
+    position: relative;
+}
+
+.tooltip-btn:hover::before {
+    content: attr(data-tooltip);
+    /* Use data-html attribute */
+    position: absolute;
+    background-color: #333;
+    color: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 100%;
+    white-space: pre-wrap;
+    /*max-width: 200px;*/
+    overflow: hidden;
+    z-index: 1;
+}
+
+.tooltip-btn:hover::after {
+    content: "";
+    position: absolute;
+    border-width: 10px;
+    border-style: solid;
+    border-color: #333 transparent transparent transparent;
+    bottom: -20px;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+}
+
+#save-load-container {
+    position: fixed;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+}
