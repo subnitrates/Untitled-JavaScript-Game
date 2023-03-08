@@ -1,93 +1,121 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="UTF-8">
-    <title>Incremental Game</title>
-    <link rel="stylesheet" type="text/css" href="style.css">
-</head>
-
-<body>
-    <h1>Incremental Game</h1>
-    <div class="resources">
-        <h2>Resources</h2>
-    </div>
-    <div class="resources">
-        <ul>
+   <head>
+      <meta charset="UTF-8">
+      <title>Untitled Incremental Game</title>
+      <link rel="stylesheet" type="text/css" href="style.css">
+   </head>
+   <body>
+      <header>
+         <div class="header-container">Untitled Incremental Game</div>
+      </header>
+   </body>
+   <main>
+      <div class="resources">
+         <h2>Resources</h2>
+      </div>
+      <div class="resources">
+         <ul>
             <li>Food: <span id="food" class="resource"></span></li>
             <li>Water: <span id="water" class="resource"></span></li>
-            <!--<li>Population: <span id="population"></span></li>-->
+            <li>Population: <span id="population"></span></li>
             <li>Wood: <span id="wood" class="resource"></span></li>
             <li>Stone: <span id="stone" class="resource"></span></li>
             <li>Hide: <span id="animalHides" class="resource"></span></li>
-        </ul>
-    </div>
-    <div class="generator">
-        <h2>Generators</h2>
-    </div>
-    <div class="generator">
-        <h3>Food</h3>
-        <button id="food-generate">Scavange for Food</button>
-        <button id="food-upgrade">Build a Farm</button>
-        <p>Level: <span id="food-level"></span></p>
-        <p>Cost: <span id="food-cost"></span></p>
-        <p>Per Click: <span id="food-perclick"></span></p>
-        <p>Per Second: <span id="food-persecond"></span></p>
-    </div>
-    <div class="generator">
-        <h3>Water</h3>
-        <button id="water-generate">Collect Water</button>
-        <button id="water-upgrade">Build a Well</button>
-        <p>Level: <span id="water-level"></span></p>
-        <p>Cost: <span id="water-cost"></span></p>
-        <p>Per Click: <span id="water-perclick"></span></p>
-        <p>Per Second: <span id="water-persecond"></span></p>
-
-    </div>
-
-    <div class="generator">
-        <h3>Wood</h3>
-        <button id="wood-generate">Chop Wood</button>
-        <button id="wood-upgrade">Build a Lumber Mill</button>
-        <p>Level: <span id="wood-level"></span></p>
-        <p>Cost: <span id="wood-cost"></span> wood</p>
-        <p>Per Click: <span id="wood-perclick"></span></p>
-        <p>Per Second: <span id="wood-persecond"></span></p>
-    </div>
-
-    <div class="generator">
-        <h3>Quarry</h3>
-        <button id="stone-generate">Mine Stone</button>
-        <button id="stone-upgrade">Build a Mine</button>
-        <p>Level: <span id="stone-level"></span></p>
-        <p>Cost: <span id="stone-cost"></span> stone</p>
-        <p>Per Click: <span id="stone-perclick"></span></p>
-        <p>Per Second: <span id="stone-persecond"></span></p>
-    </div>
-
-    <div class="generator">
-        <h3>Hunting Lodge</h3>
-        <button id="animalHides-generate">Hunt Animals</button>
-        <button id="animalHides-upgrade">Build a Hunting Lodge</button>
-        <p>Level: <span id="animalHides-level"></span></p>
-        <p>Cost: <span id="animalHides-cost"></span> animal hides</p>
-        <p>Per Click: <span id="animalHides-perclick"></span></p>
-        <p>Per Second: <span id="animalHides-persecond"></span></p>
-
-    </div>
-
-
-    <div id="save-load-container" style="position: absolute; top: 0; right: 0;">
-        <button id="save-button">Save</button>
-        <button id="load-button">Load</button>
-    </div>
-
-
-    <script src="resources.js"></script>
-    <script src="generators.js"></script>
-    <script src="buttons.js"></script>
-    <script src="script.js"></script>
-
-</body>
-
+         </ul>
+      </div>
+      <div class="tabs">
+         <button class="tablinks" onclick="openTab(event, 'labor')">Labor</button>
+         <button class="tablinks" onclick="openTab(event, 'buildings')">Buildings</button>
+         <button class="tablinks" onclick="openTab(event, 'upgrades')">Upgrades</button>
+         <button class="tablinks" onclick="openTab(event, 'research')">Research</button>
+         <button class="tablinks" onclick="openTab(event, 'population')">Population</button>
+         <button class="tablinks" onclick="openTab(event, 'settings')">Settings</button>
+      </div>
+      <div id="labor" class="tabcontent">
+         <div class="menuDescription">
+            <h2>Labor</h2>
+            <p>Work hard to gather some resources.</p>
+         </div>
+         <div class="tabBackground">
+            <h3>Food</h3>
+            <button id="food-generate">Scavange for Food</button>
+            <button id="water-generate">Collect Water</button>
+            <button id="wood-generate">Chop Wood</button>
+            <button id="stone-generate">Mine Stone</button>
+            <button id="animalHides-generate">Hunt Animals</button>
+         </div>
+      </div>
+      <div id="buildings" class="tabcontent">
+         <div class="menuDescription">
+            <h2>Buildings</h2>
+            <p>Constructing new buildings will help your civilization grow.</p>
+         </div>
+         <div class="buildings">            
+            <button id=" food-upgrade">Build a Farm</button>
+            <p>Level: <span id="food-level"></span></p>
+            <p>Cost: <span id="food-cost"></span></p>
+            <p>Per Click: <span id="food-perclick"></span></p>
+            <p>Per Second: <span id="food-persecond"></span></p>
+         </div>
+         <div class="buildings">
+            <button id="water-upgrade">Build a Well</button>
+            <p>Level: <span id="water-level"></span></p>
+            <p>Cost: <span id="water-cost"></span></p>
+            <p>Per Click: <span id="water-perclick"></span></p>
+            <p>Per Second: <span id="water-persecond"></span></p>
+         </div>
+         <div class="buildings"> <button id="wood-upgrade">Build a Lumber Mill</button>
+         <p>Level: <span id="wood-level"></span></p>
+         <p>Cost: <span id="wood-cost"></span></p>
+         <p>Per Click: <span id="wood-perclick"></span></p>
+         <p>Per Second: <span id="wood-persecond"></span></p>
+      </div>
+      <div class="buildings">
+         <button id="stone-upgrade">Build a Mine</button>
+         <p>Level: <span id="stone-level"></span></p>
+         <p>Cost: <span id="stone-cost"></span> stone</p>
+         <p>Per Click: <span id="stone-perclick"></span></p>
+         <p>Per Second: <span id="stone-persecond"></span></p>
+      </div>
+      <div class="buildings">
+         <button id="animalHides-upgrade">Build a Hunting Lodge</button>
+         <p>Level: <span id="animalHides-level"></span></p>
+         <p>Cost: <span id="animalHides-cost"></span></p>
+         <p>Per Click: <span id="animalHides-perclick"></span></p>
+         <p>Per Second: <span id="animalHides-persecond"></span></p>
+      </div>
+      <div class="buildings"><h1>population?</h1></div>
+      </div>
+      <div id="upgrades" class="tabcontent">
+         <div class="menuDescription">
+            <h2>Upgrades</h2>
+            <p>Explore the services I offer.</p>
+         </div>
+      </div>
+      <div id="research" class="tabcontent">
+         <div class="menuDescription">
+            <h2>Research</h2>
+            <p>View examples of my work.</p>
+         </div>
+      </div>
+      <div id="population" class="tabcontent">
+         <div class="menuDescription">
+            <h2>Population</h2>
+            <p>Read my latest blog posts.</p>
+         </div>
+      </div>
+      <div id="settings" class="tabcontent">
+         <div class="menuDescription">
+            <h2>Settings</h2>
+         </div>
+         <div id="save-load-container" style="position: absolute; top: 0; right: 0;">
+            <button id="save-button">Save</button>
+            <button id="load-button">Load</button>
+         </div>
+      </div>
+      <script src="/game-logic/buttons.js"></script>
+      <script src="/game-logic/script.js"></script>
+      <script src="website.js"></script>
+   </main>
 </html>

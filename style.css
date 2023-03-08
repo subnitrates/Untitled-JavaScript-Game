@@ -3,9 +3,11 @@ body {
     background-color: hsl(0, 0%, 10%);
     padding: 20px;
 }
+
 h1 {
     text-align: center;
 }
+
 button {
     background-color: #4CAF50;
     color: white;
@@ -15,34 +17,100 @@ button {
     margin-top: 10px;
     cursor: pointer;
 }
+
 button:hover {
     background-color: #3e8e41;
 }
+
 p {
     margin-top: 20px;
     margin-bottom: 10px;
     font-size: 16px;
     font-weight: bold;
 }
+
 #resources {
     font-size: 24px;
     font-weight: bold;
     margin-top: 5px;
     margin-bottom: 20px;
 }
+
 .resource-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-  }  
-#level, #cost, #perclick {
+}
+
+#level,
+#cost,
+#perclick {
     font-weight: normal;
 }
-.generator
-    {
-        background-color: #595959;
-    }
-.resources
-    {
-        background-color: goldenrod;
-    }
+
+.buildings {
+    background-color: #595959;
+    display: flexbox;
+    justify-content: space-between;
+    align-items: center;
+}
+.collectResources {
+    background-color: #9c6363;
+    padding: 14px 16px;
+}
+.resources {
+    background-color: goldenrod;
+}
+
+header {
+    background-image: url("headerBackground.png");
+    background-size: cover;
+    background-position: center bottom;
+    height: 200px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.header-container {
+    max-width: 960px;
+    padding: 1rem;
+}
+
+.tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.tablinks {
+    background-color: #714aff;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    padding: 14px 16px;
+    font-size: 18px;
+    width: 200px;
+    margin: 10px;
+}
+
+.tablinks.active {
+    background-color: #371dff;
+}
+
+.tabcontent {
+    display: none;
+    padding: 1rem;
+}
+
+.tabcontent.active {
+    display: block;
+}
+
+.tabcontent {
+    background-color: #757575;
+    padding: 1rem;
+    font-optical-sizing: 14;
+}
