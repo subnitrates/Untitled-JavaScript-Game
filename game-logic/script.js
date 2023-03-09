@@ -44,13 +44,11 @@ var buildings = {
 
 
 
-// update the display of all resource quantities on the UI
-function updateResourceUI(resource) {
-    const resourceEl = document.getElementById(resource);
-    resourceEl.textContent = resources[resource];
-}
+
 
 function updateResources(resource, quantity) {
+    console.log(`Updating ${resource} with quantity ${quantity}`);
+
     // check if the resource exists in the resources object
     if (!(resource in resources)) {
         console.error('Resource not found!', resource);
@@ -66,9 +64,24 @@ function updateResources(resource, quantity) {
         console.error('Resource element not found!', resource);
         return;
     }
+    
     resourceEl.textContent = resources[resource];
 
     console.log(`Updated ${resource} with quantity ${quantity}.`);
+}
+
+// update the display of all resource quantities on the UI
+function updateResourceUI(resource) {
+    const resourceEl = document.getElementById(resource);
+    resourceEl.textContent = resources[resource];
+}
+
+// update inital resource display
+for (const resource in resources) {
+    const resourceDisp = document.getElementById(resource + '-quantity');
+    if (resourceDisp) {
+        resourceDisp.textContent = resources[resource]
+    }
 }
 
 // add click event listeners to all resource buttons
@@ -101,7 +114,8 @@ for (const building in buildings) {
 function updateBuilding(building, quantity) {
     // check if the building exists in the buildings object
     if (!(building in buildings)) {
-        console.error(`Building '${building}' not found!`);
+        console.log("Buildings:", buildings);
+        console.error(`First check. Building '${building}' not found!`);
         return;
     }
     console.log(`Updating building '${building}' with quantity ${quantity}...`);
@@ -118,16 +132,17 @@ function updateBuilding(building, quantity) {
     ownedEl.textContent = buildings[building].owned;
 }
 
-var save = {
-    resources: resources,
-    buildings: buildings
-};
+
 
 // save game state to local storage
 function saveGame() {
+    var save = {
+        resources: resources,
+        buildings: buildings
+    };
     console.log("Saving game...");
-    console.log("Saved resources:", save.resources);
-    console.log("Saved buildings:", save.buildings);
+    console.log("Saved resources:", resources);
+    console.log("Saved buildings:", buildings);
     localStorage.setItem("save", JSON.stringify(save));
 }
 
@@ -137,8 +152,8 @@ function loadGame() {
     console.log ("Loading game...")
     var savegame = JSON.parse(localStorage.getItem("save"));
     if (typeof savegame.resources !== "undefined") resources = savegame.resources;
-    console.log("Loaded resources:", save.resources);
-    console.log("Loaded buildings:", save.buildings);
+    console.log("Loaded resources:", resources);
+    console.log("Loaded buildings:", buildings);
     console.log("Save data loaded.")
 }
 
@@ -163,8 +178,6 @@ document.getElementById("load-button").addEventListener("click", function () {
 document.getElementById("delete-button").addEventListener("click", function () {
     deleteSave();
 });
-
-
 
 // auto-save every 30 seconds
 setInterval(function () {
