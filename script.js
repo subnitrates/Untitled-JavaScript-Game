@@ -1,14 +1,21 @@
+
 // define game state object
 var gameState = {
     version: "0.0.2",
     resources: resources,
-    buildings: buildings
+    buildings: buildings,
+    timestate: {
+        totalProgress: 0,
+        lastUpdateTime: Date.now()
+      },
+
 };
 
 // save game state to local storage
 function saveGame() {
     console.log("Saving game...");
     localStorage.setItem("gameState", JSON.stringify(gameState));
+    console.log(gameState.timestate.totalProgress)
 }
 
 // load game state from local storage
@@ -19,8 +26,10 @@ function loadGame() {
         // load saved data if version matches
         resources = savedState.resources;
         buildings = savedState.buildings;
+        timestate = savedState.timestate;
         gameState.resources = resources;
         gameState.buildings = buildings;
+        gameState.timestate = timestate;
         updateResources();
         updateBuildings();
     }
@@ -74,3 +83,4 @@ setInterval(function() {
     updateBuildingCosts();
     updatepassiveGainsValues();
 }, 250);
+
