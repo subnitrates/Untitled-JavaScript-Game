@@ -90,55 +90,95 @@ function purchaseBuildings(buildingName) {
     // check existing costs
     const cost = buildingCosts[buildingName];
     const multiplier = buildingCostMultipliers[buildingName];
+    // Get the number of buildings already owned for the given building.
+const buildingCount = buildings[buildingName];
 
     // check if player has enough resources
     for (let resource in cost) {
-        if (resources[resource] < cost[resource] * multiplier) {
+        if (resources[resource] < (cost[resource] * multiplier ** buildingCount)) {
             console.log(`Not enough ${resource} to purchase ${buildingName}.`);
             return false;
+        } else {
+            resources[resource] -= (cost[resource] * multiplier);
         }
     }
-    // remove resources from player
-    for (let resource in cost) {
-        resources[resource] -= cost[resource] * multiplier;
 
-        // increment building count
-        buildings[buildingName]++;
+    // increment building count
+    buildings[buildingName]++;
 
-        console.log(`${buildingName} purchased.`);
+    console.log(`${buildingName} purchased.`);
 
-        // log current building counts
-        console.log(`Current building counts:`);
-        for (let building in buildings) {
-            console.log(`${building} : ${buildings[building]}`);
+    // log current building counts
+    console.log(`Current building counts:`);
+    for (let building in buildings) {
+        console.log(`${building} : ${buildings[building]}`);
     }
+
     return true;
-    
-}}
 
 
-// get building costs
+}
+
+
+// This function takes in the name of a building and calculates the current cost to purchase another one.
 function getBuildingCost(buildingName) {
+    // Get the base cost and cost multiplier for the given building.
     const cost = buildingCosts[buildingName];
     const multiplier = buildingCostMultipliers[buildingName];
-    const costStringArray = [];
-    const buildingCount = buildings[buildingName];
+    // Create an empty array to hold the string representation of each resource cost.
+const costStringArray = [];
 
-    for (const resource in cost) {
-        const resourceCost = Math.round(cost[resource] * multiplier ** buildingCount);
-        costStringArray.push(`${resource} : ${resourceCost}`);
-    }
+// Get the number of buildings already owned for the given building.
+const buildingCount = buildings[buildingName];
 
-    return costStringArray.join(", ");
+// Iterate over each resource required to purchase the building and calculate its current cost.
+for (const resource in cost) {
+    const resourceCost = Math.round(cost[resource] * multiplier ** buildingCount);
+    // Add the string representation of the current resource cost to the costStringArray.
+    costStringArray.push(`<strong>${resource}</strong> ${resourceCost}`);
+}
+
+// Join the elements of the costStringArray into a comma-separated string and return it.
+return costStringArray.join(", ");
 }
 
 
 
 // update building cost display
 function updateBuildingCosts() {
-    document.getElementById("farm-cost").textContent = getBuildingCost("farm");
-    document.getElementById("well-cost").textContent = getBuildingCost("well");
-    document.getElementById("lumber-mill-cost").textContent = getBuildingCost("lumberMill");
-    document.getElementById("quarry-cost").textContent = getBuildingCost("quarry");
-    document.getElementById("hunters-lodge-cost").textContent = getBuildingCost("huntersLodge");
-  }
+    document.getElementById("farm-cost").innerHTML = getBuildingCost("farm");
+    document.getElementById("well-cost").innerHTML = getBuildingCost("well");
+    document.getElementById("lumber-mill-cost").innerHTML = getBuildingCost("lumberMill");
+    document.getElementById("quarry-cost").innerHTML = getBuildingCost("quarry");
+    document.getElementById("hunters-lodge-cost").innerHTML = getBuildingCost("huntersLodge");
+}
+
+
+
+// get building generation values
+function getpassiveGainsValues(buildingName) {
+    //console.log(`Calculating generation values for ${buildingName}...`);
+    const building = buildings[buildingName];
+    const generationValues = [];
+
+    // loop through each resource and calculate its generation value
+    for (const resource in passiveGains[buildingName]) {
+        const baseValue = passiveGains[buildingName][resource];
+        const valuePerLevel = passiveGains[buildingName][resource];
+        const generationValue = baseValue + (valuePerLevel * building);
+        generationValues.push(`<strong>${resource}</strong> ${generationValue}`);
+    }
+    //console.log(`Generation values for ${buildingName}: ${generationValues.join(", ")}`);
+    return generationValues;
+}
+
+
+
+// update building generation values display
+function updatepassiveGainsValues() {
+    document.getElementById("farm-gain").innerHTML = getpassiveGainsValues("farm");
+    document.getElementById("well-gain").innerHTML = getpassiveGainsValues("well");
+    document.getElementById("lumber-mill-gain").innerHTML = getpassiveGainsValues("lumberMill");
+    document.getElementById("quarry-gain").innerHTML = getpassiveGainsValues("quarry");
+    document.getElementById("hunters-lodge-gain").innerHTML = getpassiveGainsValues("huntersLodge");
+}

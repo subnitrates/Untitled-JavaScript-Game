@@ -1,6 +1,6 @@
 // define game state object
 var gameState = {
-    version: "1.0",
+    version: "0.0.1",
     resources: resources,
     buildings: buildings
 };
@@ -19,10 +19,10 @@ function loadGame() {
         // load saved data if version matches
         resources = savedState.resources;
         buildings = savedState.buildings;
-        updateResources();
-        updateBuildings();
         gameState.resources = resources;
         gameState.buildings = buildings;
+        updateResources();
+        updateBuildings();
     }
 }
 
@@ -41,10 +41,10 @@ document.getElementById("load-button").addEventListener("click", function() {
     loadGame();
 });
 
-// auto-save every 30 seconds
+// auto-save every 1 seconds
 setInterval(function() {
     saveGame();
-}, 30000);
+}, 1000);
 
 // auto-load on page load
 loadGame();
@@ -60,6 +60,7 @@ function deleteSave() {
 // listener event for delete function
 document.getElementById("delete-save-button").addEventListener("click", function() {
     deleteSave();
+    location.reload();
 });
 
 // update resources based on buildings every second
@@ -72,6 +73,7 @@ setInterval(function() {
     updateBuildings();
     updateResources();
     updateBuildingCosts();
+    updatepassiveGainsValues();
 }, 250);
 
 
