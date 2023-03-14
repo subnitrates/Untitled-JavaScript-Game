@@ -155,6 +155,9 @@ function updateBuildingCosts() {
 
 
 
+
+
+
 // get building generation values
 function getpassiveGainsValues(buildingName) {
     //console.log(`Calculating generation values for ${buildingName}...`);
@@ -169,7 +172,7 @@ function getpassiveGainsValues(buildingName) {
         generationValues.push(`<strong>${resource}</strong> ${generationValue}`);
     }
     //console.log(`Generation values for ${buildingName}: ${generationValues.join(", ")}`);
-    return generationValues;
+    return generationValues.join(", ");
 }
 
 
