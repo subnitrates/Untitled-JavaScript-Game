@@ -20,30 +20,57 @@ const passiveGains = {
         food: 10
     },
     well: {
-        water: 15
+        water: 10.5
     },
     lumberMill: {
-        wood: 5
+        wood: 1.5
     },
     quarry: {
-        stone: 3
+        stone: 2.3
     },
     huntersLodge: {
-        food: 5,
-        animalHides: 5
+        food: 2.5,
+        animalHides: 2.5
     },
 };
 
-function addPassiveResources() {
+// This function adds passive resources based on the number of buildings
+function addPassiveResources(dt, t) {
+    // loop through each building type
     for (let building in buildings) {
+    // get the number of buildings of this type
+    const numBuildings = buildings[building];
+    // get the passive gains for this building type
+    const gains = passiveGains[building];
+    // loop through each resource gain for this building type
+    for (let resource in gains) {
+    // calculate the total gain for this resource based on the number of buildings
+    const amount = gains[resource] * numBuildings * (dt / 1000);
+    // add the calculated amount of the resource to the player's resources
+    resources[resource] += amount;
+    }
+    }
+    // Update the player's resources on the screen
+    updateResources();
+    };
+
+/*OLD:// This function adds passive resources based on the number of buildings
+function addPassiveResources() {
+    // loop through each building type
+    for (let building in buildings) {
+        // get the number of buildings of this type
         const numBuildings = buildings[building];
+        // get the passive gains for this building type
         const gains = passiveGains[building]
+        // loop through each resource gain for this building type
         for (let resource in gains) {
+            // calculate the total gain for this resource based on the number of buildings
             const amount = gains[resource] * numBuildings;
+            // add the calculated amount of the resource to the player's resources
             resources[resource] += amount;
         }
     }
-};
+};*/
 
 // define costs for each building
 const buildingCosts = {

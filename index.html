@@ -9,46 +9,46 @@
       <link rel="stylesheet" type="text/css" href="style.css">
    </head>
    <body>
-    <button id="playButton">Play</button>
+    <div class="pre-game-load-button-container"><button id="playButton" class="pre-game-load-button">Play</button></div>
     <iframe id="gameFrame" data-src="game.html" sandbox="allow-same-origin allow-scripts" style="display:none;"></iframe>
     <script>
-const playButton = document.querySelector('#playButton');
-const iframe = document.querySelector('iframe');
+        const playButton = document.querySelector('#playButton');
+        const iframe = document.querySelector('iframe');
+        const playButtonContainer = document.querySelector('.pre-game-load-button-container');
 
-playButton.addEventListener('click', () => {
-    // Get the data-src value from the iframe
-    const src = iframe.dataset.src;
+        playButton.addEventListener('click', () => {
+            // Get the data-src value from the iframe
+            const src = iframe.dataset.src;
 
-    // Create a new iframe element and set its src to the data-src value
-    const newIframe = document.createElement('iframe');
-    newIframe.src = src;
-    newIframe.sandbox = 'allow-same-origin allow-scripts';
-    document.body.appendChild(newIframe);
+            // Create a new iframe element and set its src to the data-src value
+            const newIframe = document.createElement('iframe');
+            newIframe.src = src;
+            newIframe.sandbox = 'allow-same-origin allow-scripts';
+            newIframe.classList.add("visible");
+            document.body.appendChild(newIframe);
 
-    // Create and append script tags for each script file that you want to load
-    /*const scripts = [
-            'script1.js',
-            'script2.js',
-            'script3.js'
-        ];
-        
-        scripts.forEach((script) => {
-            const scriptTag = document.createElement('script');
-            scriptTag.src = script;
-            document.body.appendChild(scriptTag);
-        });*/
+            // Create and append script tags for each script file that you want to load
+            /*const scripts = [
+                    'script1.js',
+                    'script2.js',
+                    'script3.js'
+                ];
+                
+                scripts.forEach((script) => {
+                    const scriptTag = document.createElement('script');
+                    scriptTag.src = script;
+                    document.body.appendChild(scriptTag);
+                });*/
 
-    // Make the new iframe go full screen
-    newIframe.style.position = 'fixed';
-    newIframe.style.top = '0';
-    newIframe.style.left = '0';
-    newIframe.style.width = '100%';
-    newIframe.style.height = '100%';
+            // Make the new iframe go full screen
+            newIframe.style.position = 'fixed';
+            newIframe.style.top = '0';
+            newIframe.style.left = '0';
+            newIframe.style.width = '100%';
+            newIframe.style.height = '100%';
 
-    const gameFrame = document.getElementById("gameFrame");
-    gameFrame.classList.add("visible");
-});
-
+            playButtonContainer.classList.add('hidden');
+        });
     </script>
   </body>
   

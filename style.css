@@ -193,3 +193,71 @@ body.dark-mode .buildings h3 {
   overflow: hidden;
   z-index: 999999;
 }
+
+.fadeOut {
+  animation-name: fadeOut;
+  animation-duration: 1s;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+}
+
+#wood-change {
+  position: absolute;
+  left: 20px; /* adjust the offset as needed */
+  color: green;
+}
+
+.pre-game-load-button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.pre-game-load-button {
+  background-color: #93bcff;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  cursor: pointer;
+  position: relative;
+  z-index: 2;
+}
+
+.hidden {
+  display: none;
+}
+
+.increase {
+  color: green;
+}
+
+.decrease {
+  color: red;
+}
+
+.zero {
+  color: white;
+}
+
+
+
