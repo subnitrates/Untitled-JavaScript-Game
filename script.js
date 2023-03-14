@@ -1,6 +1,6 @@
 // define game state object
 var gameState = {
-    version: "0.0.1",
+    version: "0.0.2",
     resources: resources,
     buildings: buildings
 };
