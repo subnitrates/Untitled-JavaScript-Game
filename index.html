@@ -9,6 +9,7 @@
       <link rel="stylesheet" type="text/css" href="style.css">
    </head>
    <body>
+    <div class="dark-mode-toggle-button"><button class="dark-mode-toggle-button" id="darkModeToggle">Dark Mode</button></div>
       <h1>My JavaScript Incremental</h1>
       <div class="hud">
          <div>
@@ -38,10 +39,9 @@
       </div>
       <div class="wrapper">
          <div class="buttonWrapper">
-            <button class="tab-button active" style="border-top-left-radius: 10px;" data-id="manualLabor">Manual
-            Labor</button>
+            <button class="tab-button active" style="border-top-left-radius: 10px;" data-id="manualLabor">Manual Labor</button>
             <button class="tab-button" style="border-top-right-radius: 10px;" data-id="buildings">Buildings</button>
-            <button class="tab-button" style="border-top-right-radius: 10px;" data-id="upgrades">Upgrades</button>
+            <button class="tab-button" style="border-top-right-radius: 10px;" data-id="upgrades" id="upgrades">Upgrades</button>
             <button class="tab-button" style="border-top-right-radius: 10px;" data-id="settings">Settings</button>
          </div>
          <div class="contentWrapper">
@@ -65,35 +65,35 @@
             </div>
             <div class="content" id="buildings">
                <div class="buildings">
-                  <div>
+                  <div class="buildings">
                      <h3>Food</h3>
                      <button class="btn" data-toggle="tooltip" id="build-a-farm">Build a
                      Farm</button>
                      <div class="cost-gain">Cost: <span id="farm-cost"></span></div>
                      <div class="cost-gain">Total Gain per Second: <span id="farm-gain"></span></div>
                   </div>
-                  <div>
+                  <div class="buildings">
                      <h3>Water</h3>
                      <button class="btn" data-toggle="tooltip" id="water-upgrade">Build a
                      Well</button>
                      <div class="cost-gain">Cost: <span id="well-cost"></span></div>
                      <div class="cost-gain">Total Gain per Second: <span id="well-gain"></span></div>
                   </div>
-                  <div>
+                  <div class="buildings">
                      <h3>Wood</h3>
                      <button class="btn" data-toggle="tooltip" id="wood-upgrade">Build a Lumber
                      Mill</button>
                      <div class="cost-gain">Cost: <span id="lumber-mill-cost"></span></div>
                      <div class="cost-gain">Total Gain per Second: <span id="lumber-mill-gain"></span></div>
                   </div>
-                  <div>
+                  <div class="buildings">
                      <h3>Quarry</h3>
                      <button class="btn" data-toggle="tooltip" id="stone-upgrade">Build a
                      Mine</button>
                      <div class="cost-gain">Cost: <span id="quarry-cost"></span></div>
                      <div class="cost-gain">Total Gain per Second: <span id="quarry-gain"></span></div>
                   </div>
-                  <div>
+                  <div class="buildings">
                      <h3>Hunting Lodge</h3>
                      <button class="btn" id="animalHides-upgrade">Build a Hunting Lodge</button>
                      <div class="cost-gain">Cost: <span id="hunters-lodge-cost"></span></div>

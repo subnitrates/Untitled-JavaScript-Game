@@ -84,14 +84,13 @@ const buildingCostMultipliers = {
     huntersLodge: 1.2,
 }
 
-
 // purchase buildings
 function purchaseBuildings(buildingName) {
     // check existing costs
     const cost = buildingCosts[buildingName];
     const multiplier = buildingCostMultipliers[buildingName];
     // Get the number of buildings already owned for the given building.
-const buildingCount = buildings[buildingName];
+    const buildingCount = buildings[buildingName];
 
     // check if player has enough resources
     for (let resource in cost) {
@@ -116,9 +115,7 @@ const buildingCount = buildings[buildingName];
 
     return true;
 
-
 }
-
 
 // This function takes in the name of a building and calculates the current cost to purchase another one.
 function getBuildingCost(buildingName) {
@@ -126,23 +123,21 @@ function getBuildingCost(buildingName) {
     const cost = buildingCosts[buildingName];
     const multiplier = buildingCostMultipliers[buildingName];
     // Create an empty array to hold the string representation of each resource cost.
-const costStringArray = [];
+    const costStringArray = [];
 
-// Get the number of buildings already owned for the given building.
-const buildingCount = buildings[buildingName];
+    // Get the number of buildings already owned for the given building.
+    const buildingCount = buildings[buildingName];
 
-// Iterate over each resource required to purchase the building and calculate its current cost.
-for (const resource in cost) {
-    const resourceCost = Math.round(cost[resource] * multiplier ** buildingCount);
-    // Add the string representation of the current resource cost to the costStringArray.
-    costStringArray.push(`<strong>${resource}</strong> ${resourceCost}`);
+    // Iterate over each resource required to purchase the building and calculate its current cost.
+    for (const resource in cost) {
+        const resourceCost = Math.round(cost[resource] * multiplier ** buildingCount);
+        // Add the string representation of the current resource cost to the costStringArray.
+        costStringArray.push(`<strong>${resource}</strong> ${resourceCost}`);
+    }
+
+    // Join the elements of the costStringArray into a comma-separated string and return it.
+    return costStringArray.join(", ");
 }
-
-// Join the elements of the costStringArray into a comma-separated string and return it.
-return costStringArray.join(", ");
-}
-
-
 
 // update building cost display
 function updateBuildingCosts() {
@@ -152,11 +147,6 @@ function updateBuildingCosts() {
     document.getElementById("quarry-cost").innerHTML = getBuildingCost("quarry");
     document.getElementById("hunters-lodge-cost").innerHTML = getBuildingCost("huntersLodge");
 }
-
-
-
-
-
 
 // get building generation values
 function getpassiveGainsValues(buildingName) {
@@ -174,8 +164,6 @@ function getpassiveGainsValues(buildingName) {
     //console.log(`Generation values for ${buildingName}: ${generationValues.join(", ")}`);
     return generationValues.join(", ");
 }
-
-
 
 // update building generation values display
 function updatepassiveGainsValues() {

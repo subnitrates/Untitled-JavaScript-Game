@@ -30,7 +30,6 @@ function loadGame() {
 gameState.resources = resources;
 gameState.buildings = buildings;
 
-
 // add event listener for save button
 document.getElementById("save-button").addEventListener("click", function() {
     saveGame();
@@ -75,5 +74,3 @@ setInterval(function() {
     updateBuildingCosts();
     updatepassiveGainsValues();
 }, 250);
-
-
