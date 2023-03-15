@@ -9,11 +9,13 @@
       <link rel="stylesheet" type="text/css" href="style.css">
    </head>
    <body>
+      <div class="background-image"></div>
 
     <div class="dark-mode-toggle-button"><button class="dark-mode-toggle-button" id="darkModeToggle">Dark Mode</button></div>
       <h1>My JavaScript Incremental</h1>
       <div class="hud">
-         <div>
+         <div class="hud-box"></div>
+         <div class="hud-box">
             <div class="resources">
                <h2>Resources</h2>
             </div>
@@ -25,7 +27,7 @@
                <div>Animal Hides: <span id="animalHides" class="resource"></span> <span class="animalHides-change" id="animalHidesIncrease"></span></div>
             </div>
          </div>
-         <div>
+         <div class="hud-box">
             <div class="buildings-header">
                <h2>Buildings</h2>
             </div>
@@ -36,7 +38,9 @@
                <div>Quarrys: <span id="quarry" class="building"></span></div>
                <div>Hunting Lodges: <span id="huntersLodge" class="building"></span></span></div>
             </div>
+            
          </div>
+         <div class="hud-box"></div>
       </div>
       <div class="wrapper">
          <div class="buttonWrapper">
